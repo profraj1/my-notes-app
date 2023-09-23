@@ -43,12 +43,18 @@ const Notes = ({ notes }) => {
         )}
 
         <button className="btn" onClick={() => setSerachBar(!serachBar)}>
-          {serachBar ? <MdClose onClick={() => setFilterNotes(notes)}/> : <CiSearch />}
+          {serachBar ? (
+            <MdClose onClick={() => setFilterNotes(notes)} />
+          ) : (
+            <CiSearch />
+          )}
         </button>
       </header>
       <div className="notes__container">
-        {filterNotes.length === 0 && (
+        {filterNotes.length === 0 ? (
           <p className="empty__notes">No Notes Found.</p>
+        ) : (
+          ""
         )}
         {filterNotes.map((note) => {
           return <NoteItem key={note.id} note={note} />;
