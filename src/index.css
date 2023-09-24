@@ -130,6 +130,8 @@ h2 {
 
 .note:hover {
     opacity: 0.9;
+    box-shadow: 1px 1px 1px 1px white;
+    padding: 1rem;
 }
 
 .note:nth-child(3) {

@@ -10,6 +10,9 @@ const EditNote = ({ notes, setNotes }) => {
 
   const [noteTitle, setNoteTitle] = useState(note.title);
   const [noteDetails, setNoteDetails] = useState(note.details);
+  const titleLen = note.title.length;
+  const detailsLen = note.details.length;
+
   const date = useCreateDate();
   const navigate = useNavigate();
 
@@ -17,12 +20,17 @@ const EditNote = ({ notes, setNotes }) => {
     e.preventDefault();
 
     if (noteTitle && noteDetails) {
+      let edited = false;
+
+      if (noteTitle.length !== titleLen || noteDetails.length !== detailsLen) {
+        edited = true;
+      }
       const newNote = {
         id: id,
         title: noteTitle,
         details: noteDetails,
         date: date,
-        edited: true
+        edited: edited,
       };
 
       const newNotes = notes.map((item) => {
@@ -37,12 +45,11 @@ const EditNote = ({ notes, setNotes }) => {
   };
 
   const handleDeleteNote = () => {
-    if(window.confirm("Are you sure you want to delete this note?")){
+    if (window.confirm("Are you sure you want to delete this note?")) {
       const newNotes = notes.filter((item) => item.id !== id);
       setNotes(newNotes);
       navigate("/");
     }
-    
   };
 
   return (
