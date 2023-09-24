@@ -20,7 +20,7 @@ const EditNote = ({ notes, setNotes }) => {
     e.preventDefault();
 
     if (noteTitle && noteDetails) {
-      let edited = false;
+      let edited = note.edited;
 
       if (noteTitle.length !== titleLen || noteDetails.length !== detailsLen) {
         edited = true;
